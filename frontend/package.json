@@ -1,0 +1,25 @@
+{
+  "name": "todo-frontend",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "generate": "openapi-typescript-codegen --client fetch --useUnionTypes --output src/api $NEXT_PUBLIC_API_BASE_URL/openapi.json"
+  },
+  "dependencies": {
+    "next": "14.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@tanstack/react-query": "^5.0.0",
+    "@tanstack/react-query-devtools": "^5.0.0",
+    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.31",
+    "shadcn-ui": "^0.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "openapi-typescript-codegen": "^0.24.1"
+  }
+}

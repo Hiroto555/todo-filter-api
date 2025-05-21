@@ -1,4 +1,6 @@
+import os
 from fastapi import FastAPI, Depends, HTTPException, Query, status
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List, Optional
 
@@ -17,6 +19,19 @@ app = FastAPI(
     title="Todo Filter API",
     version="0.2.0",
     description="FastAPI + PostgreSQL で作るフィルタ可能な Todo API",
+)
+
+# CORS configuration. The allowed origin can be changed with FRONT_ORIGIN
+# environment variable. "*" allows any origin.
+front_origin = os.getenv("FRONT_ORIGIN", "*")
+allow_origins = [front_origin] if front_origin != "*" else ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allow_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
